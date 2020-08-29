@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node app"
+    "test": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "whiteboard"
   ],
   "author": "Abhishek Darouch",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Abhishek4u/WhiteBoard/issues"
   },
