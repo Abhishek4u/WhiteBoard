@@ -49,7 +49,8 @@ socketServer.on("connection", function (socket) {
     })
 
 })
+let port = process.env.PORT || 3000;
 
-httpServer.listen(3000, function () {
+httpServer.listen(port, function () {
     console.log("Server is listening to request at port 3000");
 })
