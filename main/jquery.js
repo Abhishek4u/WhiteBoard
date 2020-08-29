@@ -1,6 +1,6 @@
 
 $(".slider").slider({
-    max: 200,
+    max: 100,
     min: 5,
     step: 2,
     value: 5
