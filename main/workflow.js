@@ -34,6 +34,8 @@ let btn = document.getElementById("sckt");
 let id = document.getElementById("id");
 let name = document.getElementById("name");
 
+let roomId = id.value;
+
 btn.addEventListener("click", () => {
 
     idNRoomGeneration();
@@ -76,18 +78,19 @@ sendBtn.addEventListener("click", () => {
 function idNRoomGeneration() {
 
     person = name.value;
-    console.log(person);
+    // console.log(person);
     name.value = "";
 
     socketRoom.style.display = "none";
     isClicked = false;
 
-    let sId = id.value;
-    socket.emit('switchRoom', {sId,person});
+    let newroom = id.value;
+    console.log(newroom);
+    socket.emit('switchRoom', {newroom,person});
 
     id.value = "";
     let idChild = document.getElementById("socketId");
-    idChild.innerText = " Your current id is : " + sId;
+    idChild.innerText = " Your current id is : " + newroom;
     idChild.style.color = "green";
 
 
@@ -96,7 +99,7 @@ function idNRoomGeneration() {
     //         <h4>ID : None</h4>
 
     let chatTitle = document.getElementById("chat-title");
-    chatTitle.innerHTML = `<h4>Chat Room</h4><h4>ID : ${sId}</h4>`;
+    chatTitle.innerHTML = `<h4>Chat Room</h4><h4>ID : ${newroom}</h4>`;
     chatTitle.style.color = "green";
 }
 
@@ -108,15 +111,16 @@ function disconnectMe() {
 
     let idChild = document.getElementById("socketId");
     idChild.innerText = " Hey! Now You are connected to unique room ";
-    idChild.style.color = "orange";
+    idChild.style.color = "#f51f5a";
 
-    let uniqueId = randomId();
-    // console.log(uniqueId);
-    socket.emit('switchRoom', uniqueId);
+    let newroom = randomId();
+    console.log(newroom);
+    let person = name.value;
+    socket.emit('switchRoom', {newroom,person});
 
     let chatTitle = document.getElementById("chat-title");
     chatTitle.innerHTML = `<h4>Chat Room</h4><h4>ID : Unique ID</h4>`;
-    chatTitle.style.color = "orange";
+    chatTitle.style.color = "#f51f5a";
 }
 
 function sendTheMessage() {
@@ -136,7 +140,7 @@ function sendTheMessage() {
         let time = hours + ":" + minutes;
 
         div.innerHTML = `<h5  style="color: blue;">${person}<span>${time}</span></h5><h4>${msgPara}</h4></div>`;
-        socket.emit('distributeMsg', { person, time, msgPara });
+        socket.emit('distributeMsg', {roomId, person, time, msgPara });
         msg.value = "";
 
         msgContainer.appendChild(div);

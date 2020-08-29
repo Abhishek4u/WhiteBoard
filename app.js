@@ -13,9 +13,9 @@ const socketServer = require("socket.io")(httpServer);
 app.use(express.static("main"));
 
 socketServer.on("connection", function (socket) {
-    // socket.room = roomId;
-    console.log("New Client Connected");
-    console.log(socket.id);
+    // // socket.room = roomId;
+    // console.log("New Client Connected");
+    // console.log(socket.id);
     socket.room = roomId;
 
     // Time in chat
@@ -23,11 +23,13 @@ socketServer.on("connection", function (socket) {
 
     socket.on('switchRoom', function ({newroom,person}) {
         // roomId = newroom;
-        console.log("Room Id changed");
+        // console.log("Room Id changing   " + socket.room);
+
         socket.leave(socket.room);
         socket.join(newroom);
         socket.room = newroom;
 
+        // console.log("Room Id changed   " + socket.room);
         socket.to(socket.room).emit("userJoined",person);
     });
 
