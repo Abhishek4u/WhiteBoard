@@ -14,6 +14,22 @@ sandwich.addEventListener("click", () => {
 
 })
 
+
+let chatSwitch = document.getElementsByClassName("chat")[0];
+let chatArea = document.getElementById("chat-room");
+let isClicked2 = false;
+
+chatSwitch.addEventListener("click", () => {
+    if(!isClicked2) {
+        chatArea.style.display = "block";
+        isClicked2 = true;
+    } else {
+        chatArea.style.display = "none";
+        isClicked2 = false;
+    }
+})
+
+
 let btn = document.getElementById("sckt");
 let id = document.getElementById("id");
 let name = document.getElementById("name");
@@ -36,7 +52,7 @@ let disconnect = document.getElementById("disconnect");
 disconnect.addEventListener("click", () => {
 
     disconnectMe();
-   
+
 })
 
 // Send message
@@ -67,7 +83,7 @@ function idNRoomGeneration() {
     isClicked = false;
 
     let sId = id.value;
-    socket.emit('switchRoom', sId);
+    socket.emit('switchRoom', {sId,person});
 
     id.value = "";
     let idChild = document.getElementById("socketId");
@@ -110,14 +126,17 @@ function sendTheMessage() {
         let messageBody = document.getElementById("msg-container");
         let div = document.createElement("div");
         div.classList.add("msg");
+        let msgPara = msg.value;
 
         let hours = new Date().getHours() + "";
         let minutes = new Date().getMinutes() + "";
 
         hours = hours.length == 1 ? 0 + hours : hours;
         minutes = minutes.length == 1 ? 0 + minutes : minutes;
+        let time = hours + ":" + minutes;
 
-        div.innerHTML = `<h5>${person}<span >${hours}:${minutes}</span></h5><h4>${msg.value}</h4></div>`;
+        div.innerHTML = `<h5  style="color: blue;">${person}<span>${time}</span></h5><h4>${msgPara}</h4></div>`;
+        socket.emit('distributeMsg', { person, time, msgPara });
         msg.value = "";
 
         msgContainer.appendChild(div);
