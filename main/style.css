@@ -308,9 +308,10 @@ input{
 	box-shadow: 1px 1px 10px -4px rgba(0,0,0,1);
 	width: 90%;
     margin:  0 auto 16px auto;
-    border-radius: 8px;
+    border-radius: 2px 20px 2px 18px;
 	text-align: left;
-	border: 1px solid lightskyblue;
+	border: 1px solid #ff0255;
+	border-top: 3px ridge #686161;
 
 }
 .msg>h4{
@@ -325,9 +326,11 @@ input{
 	height: 20%;
 	min-height: 22px;
 	background-image: linear-gradient(177deg, #43e97b 0%, #38f9d7 100%);
-    padding: 5px;
-    border-radius: 8px;
-    margin: 0px 0px 12px 0px;
+	padding: 4px;
+	padding-right: 10px;
+    border-radius: 0px 18px 0px 0px;
+	margin: 0px 0px 12px 0px;
+	border-bottom: 1px dashed #cc0101;
 }
 
 span{
