@@ -115,7 +115,8 @@ function redoLast() {
 }
 
 function redraw() {
-
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
     for (let i = 0; i < undoArr.length; i++) {
 
         let { x, y, id, color, width } = undoArr[i];

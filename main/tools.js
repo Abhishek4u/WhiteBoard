@@ -53,6 +53,7 @@ function changeColor(color) {
     currColor = color;
     pencilOptions.classList.remove("show");
     socket.emit("colorChange", color);
+    changeSize();
 }
 
 
