@@ -15,6 +15,7 @@ function handleTool(tool) {
     if (tool == 'pencil') {
 
         if (activeTool == 'pencil') {
+            ctx.strokeStyle = currColor;
             pencilOptions.classList.add("show");
         } else {
             ctx.strokeStyle = currColor == null ? "black" : currColor;
@@ -25,7 +26,7 @@ function handleTool(tool) {
     } else if (tool == "eraser") {
 
         if (activeTool == "eraser") {
-
+            ctx.strokeStyle = "white";
             eraserOptions.classList.add("show");
 
         } else {
