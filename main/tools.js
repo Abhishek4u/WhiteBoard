@@ -15,7 +15,7 @@ function handleTool(tool) {
     if (tool == 'pencil') {
 
         if (activeTool == 'pencil') {
-            ctx.strokeStyle = currColor;
+            ctx.strokeStyle = "#1affea";
             pencilOptions.classList.add("show");
         } else {
             ctx.strokeStyle = currColor == null ? "black" : currColor;
