@@ -17,6 +17,7 @@ function uploadFile() {
         img.src = imgLink;
 
         textBox.appendChild(img);
+        img.click();
     })
     imgInput.remove();
 }
