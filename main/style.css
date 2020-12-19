@@ -140,7 +140,8 @@ body {
 .stickyPad {
 	height: 14rem;
 	width: 14rem;
-	/* min height and min width are managed in utility.js */
+	min-height: 13rem;
+	min-width: 12rem;
 	border-radius: 2px;
 	position: absolute !important;
 	top: 40vh;
@@ -152,6 +153,7 @@ body {
 .nav-bar {
 	height: 20%;
 	min-height: 2.5rem;
+	min-width: 5rem;
 	max-height: 4rem;
 	display: flex;
 	justify-content: flex-end;
