@@ -49,10 +49,16 @@ function createBox() {
             navBar.style.padding = xSize;
             navBar.style.height = "1rem";
             navBar.style.width = "5rem";
-            console.log(navBar.style.ht);
+
             textbox.style.display = "none";
+            
+            // to remove transparent type shadow from screen decrease the size
             stickyPad.style.boxShadow = "none";
-            // stickyPad.style.minHeight = "0px";
+            stickyPad.style.minHeight = "0px";
+            stickyPad.style.minWidth = "0px";
+            stickyPad.style.height = "1rem";
+            stickyPad.style.width = "5rem";
+
             // stickyPad.style.height = "20px";
 
             if(innerDivs.length > 2) // hide draggable icons(x,y, diagonal directions)
@@ -65,7 +71,11 @@ function createBox() {
 
             textbox.style.display = "block";
             // stickyPad.style.height = "calc(stickyPad.style.height - 20rem)";
+            
+            // again add minimum height and size for stickyPad
             stickyPad.style.minHeight  = "13rem";
+            stickyPad.style.minWidth = "12rem";
+
             stickyPad.style.boxShadow =  "-2px 3px 25px -7px rgba(0,0,0,0.75)";
             // stickyPad.style.height = height;
 

@@ -140,8 +140,7 @@ body {
 .stickyPad {
 	height: 14rem;
 	width: 14rem;
-	min-width: 12rem;
-	min-height: 13rem;
+	/* min height and min width are managed in utility.js */
 	border-radius: 2px;
 	position: absolute !important;
 	top: 40vh;
