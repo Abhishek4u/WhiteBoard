@@ -27,6 +27,12 @@ body {
 	padding: 6px;
 	box-sizing: border-box;
 }
+
+.main-fxn-change-color:active {
+	background: linear-gradient(-14deg, #34f831, #01a84c);
+	border-radius: 10px;
+	height: calc(inherit+10px);
+}
 .sandwich > img {
 	transition: transform 200ms ease-in-out;
 }
@@ -65,7 +71,7 @@ body {
 	transform: scale(1.1);
 }
 
-.tool-img:active {
+.change-color:active {
 	background-color: rgb(207, 121, 92);
 	border-radius: 10px;
 	height: calc(inherit+10px);
@@ -87,7 +93,7 @@ body {
 	height: 4rem;
 	width: 9rem;
 	display: none;
-	z-index: 1;
+	z-index: 10;
 }
 .slider {
 	/* height: 1rem;
