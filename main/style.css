@@ -1,6 +1,4 @@
-* {
-	box-sizing: border-box;
-}
+
 html,
 body {
 	margin: 0px;
@@ -14,8 +12,7 @@ body {
 	background-image: linear-gradient(180deg, #fffeff 0%, #d7fffe 100%);
 }
 
-.sandwich,
-.chat {
+.main-fxn {
 	position: relative;
 	height: 90%;
 	margin: 0px 0px 6px 12px;
@@ -27,6 +24,7 @@ body {
 	align-items: center;
 	border: 1px solid darkcyan;
 	padding: 6px;
+	box-sizing: border-box;
 }
 .sandwich > img {
 	transition: transform 200ms ease-in-out;
@@ -181,6 +179,7 @@ body {
 	border-radius: inherit;
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	box-sizing: border-box;
 }
 .upload-img {
 	height: 100%;
@@ -219,7 +218,7 @@ button {
 	margin: auto;
 	color: blue;
 }
-input{
+.circular-input{
 	border: 1px solid blue;
 	border-radius: 20px;
 	color: darkslategray;
@@ -239,10 +238,11 @@ input{
 	background: linear-gradient(to right, #50c9c3, #96deda);
 	border: 1px solid darkcyan;
 	position: absolute;
-	height: calc(100vh - 95px);
+	height: calc(100vh - 125px);
     width: 20rem;
     min-width: 20rem;
-    min-height: 30rem;
+	min-height: 30rem;
+	max-height: calc(100vh - 115px);
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
@@ -271,7 +271,8 @@ input{
     
     width: 100%;
     padding: 10px;
-    text-align: center;
+	text-align: center;
+	box-sizing: border-box;
 }
 
 #msg-container,#send-msg{
@@ -333,7 +334,7 @@ input{
 	border-bottom: 1px dashed #cc0101;
 }
 
-span{
+.msg>h5>span{
     float: right;
     color: lightslategray;
 }
@@ -376,10 +377,10 @@ span{
 
 ::-webkit-scrollbar-track
 {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(119, 115, 115, 0);
 }
 
 ::-webkit-scrollbar-thumb
 {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(190, 181, 181, 0.712);
 }

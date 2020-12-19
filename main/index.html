@@ -7,6 +7,8 @@
     <title>WhiteBoard</title>
     <link rel="shortcut icon" href="./Images/board.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="editor/editor.css">
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -15,12 +17,16 @@
 <body>
 
     <div class="tool-bar">
-        <div class="sandwich">
+        <div class="main-fxn sandwich">
             <img src="./Images/options.svg" class="tool-img" id="expand">
         </div>
 
-        <div class="chat">
+        <div class="main-fxn chat">
             <img src="./Images/chat.svg" class="tool-img">
+        </div>
+
+        <div class="main-fxn code-editor">
+            <img src="./Images/code-editor.svg" class="tool-img">
         </div>
 
         <div class="tool-panel">
@@ -78,10 +84,11 @@
     <div id="socketRoom">
         <h3>Enter the ID</h3>
         <h4 style="font-style: italic; font-weight: bold;">Note: Same ID should be
-            <br>used on other connections</h4>
+            <br>used on other connections
+        </h4>
 
-        <input type="text" id="name" placeholder="Name">
-        <input type="text" id="id" placeholder="ID">
+        <input type="text" class="circular-input" id="name" placeholder="Name">
+        <input type="text" class="circular-input" id="id" placeholder="ID">
 
         <div id="socketButtons">
             <button id="sckt">Connnect</button>
@@ -110,12 +117,46 @@
             </div>
 
             <div id="send-msg">
-                <input type="text" id="msgToSend" placeholder="Enter your message here">
+                <input type="text" id="msgToSend" class="circular-input" placeholder="Enter your message here">
                 <button id="send" type="submit"><img src="./Images/send-message.svg"
                         style="max-height: 80%;">Send</button>
             </div>
         </div>
 
+    </div>
+
+    <div class="editor-container">
+
+        <div class="editor_top-bar">
+
+            <div class="files-bar">
+                <div class="file-btn">
+                    <span class="file-name"><input placeholder="File-Name"></span>
+
+                    <span class="file-extension"><input placeholder=".extnsn"></span>
+                </div>
+            </div>
+
+            <div class="options-bar">
+                <div class="open-file options-bar-btn pointer-icon" onclick=openFile()>
+                    Open
+                    <input type="file" id="code-file-opener" style="display: none;">
+                </div>
+                <div class="save-file options-bar-btn pointer-icon" onclick=saveFile()>Save </div>
+                <div class="options-bar-btn lang-selector">Language </div>
+                <select>
+                    <option value="ace/mode/c_cpp" onclick=changeExtension(value)>C / C++</option>
+                    <option value="ace/mode/java" onclick=changeExtension(value)>Java</option>
+                    <option value="ace/mode/javascript" onclick=changeExtension(value)>JavaScript</option>
+                    <option value="ace/mode/json" onclick=changeExtension(value)>JSON</option>
+                    <option value="ace/mode/python" onclick=changeExtension(value)>Python</option>
+                    <option value="ace/mode/css" onclick=changeExtension(value)>CSS</option>
+                    <option value="ace/mode/html" onclick=changeExtension(value)>HTML</option>
+                </select>
+            </div>
+        </div>
+        <div class="editor-separator"></div>
+        <div id="editor"></div>
     </div>
 
     <canvas class="board"></canvas>
@@ -142,7 +183,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script>
         const socket = io.connect("https://whiteboard-live.herokuapp.com/");
-        
+
         // const socket = io.connect("http://localhost:3000");  For offline
 
     </script>
@@ -156,6 +197,10 @@
     <script src="sticky.js"></script>
     <script src="canvas.js"></script>
     <script src="receiver.js"></script>
+
+    <script src="editor/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="editor/editor.js"></script>
+    <script src="editor/editor-fxns.js"></script>
 
 </body>
 

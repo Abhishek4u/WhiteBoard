@@ -14,6 +14,7 @@ sandwich.addEventListener("click", () => {
 
 })
 
+// ----------chat-code------------------------
 
 let chatSwitch = document.getElementsByClassName("chat")[0];
 let chatArea = document.getElementById("chat-room");
@@ -74,6 +75,28 @@ sendBtn.addEventListener("click", () => {
     sendTheMessage();
 })
 
+//-------------end-chat-code-------------------------------------
+
+
+//------------code-editor--------------------------------------
+let editorSwitch = document.getElementsByClassName("code-editor")[0];
+let editorContainer = document.getElementsByClassName("editor-container")[0];
+
+let isClicked3 = false;
+editorSwitch.addEventListener("click", () => {
+
+    if(!isClicked3) {
+        editorContainer.style.display = "block";
+        isClicked3 = true;
+    } else {
+        editorContainer.style.display = "none";
+        isClicked3 = false;
+    }
+})
+
+//----------------end-code-editor------------------------------
+
+// -------------Functions----------------------------------------
 
 function idNRoomGeneration() {
 
