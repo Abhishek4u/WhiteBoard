@@ -21,7 +21,7 @@ codeOpener.addEventListener("change", async (event) => {
 
     // show file-name and extension on editor top bar
     fileInitialName.value = fileFullName[0];
-    fileExtension.value = "." + fileFullName[1];
+    fileExtension.value = "." + fileFullName[fileFullName.length - 1];
 
     let extension = manageExtension(fileExtension.value);
     changeExtension(extension);

@@ -6,7 +6,8 @@ body {
 }
 
 .tool-bar {
-	height: 75px;
+	height: calc(10vh);
+	min-height: 3.5rem;
 	display: flex;
 	justify-content: space-between;
 	background-image: linear-gradient(180deg, #fffeff 0%, #d7fffe 100%);
@@ -44,6 +45,7 @@ body {
 	align-items: center;
 	border: 1px solid darkslategrey;
 	margin-left: 12px;
+	box-sizing: border-box;
 }
 
 .tool {
@@ -201,7 +203,7 @@ body {
 	padding: 4px;
 	text-align: center;
 	justify-items: center;
-	z-index: 1;
+	z-index: 3;
 }
 #socketRoom>button{
     margin-top: 10px;
@@ -238,16 +240,18 @@ button {
 	background: linear-gradient(to right, #50c9c3, #96deda);
 	border: 1px solid darkcyan;
 	position: absolute;
-	height: calc(100vh - 125px);
+	height: calc(80vh);
     width: 20rem;
     min-width: 20rem;
-	min-height: 30rem;
-	max-height: calc(100vh - 115px);
+	min-height: 28rem;
+	max-height: calc(83vh);
+	max-width: calc(96vw);
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
     font-family: sans-serif;
-    text-align: -webkit-center;
+	text-align: -webkit-center;
+	z-index: 2;
 
 }
 #chat-title{
