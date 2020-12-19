@@ -4,6 +4,7 @@ function createBox() {
     let close = document.createElement("div");
     let minimize = document.createElement("div");
     let textbox = document.createElement("div");
+    
 
     let closeImg = document.createElement("img");
     closeImg.setAttribute("src","./Images/close.svg");
@@ -37,21 +38,39 @@ function createBox() {
     let isOpen = true;
 
     minimize.addEventListener("click", function () {
-        let height ;
+        let innerDivs = stickyPad.children;
+        let xSize = navBar.style.width;
+        let ySize = navBar.style.height;
+        // let height ;
         if (isOpen) {
-            height = stickyPad.style.height;
-
+            // height = stickyPad.style.height;
+            // navBar.style.display = "none";
+            navBar.style.margin = ySize; // using margin and padding as buffer to save info
+            navBar.style.padding = xSize;
+            navBar.style.height = "1rem";
+            navBar.style.width = "5rem";
+            console.log(navBar.style.ht);
             textbox.style.display = "none";
             stickyPad.style.boxShadow = "none";
-            stickyPad.style.minHeight = "0px";
-            stickyPad.style.height = "20px";
+            // stickyPad.style.minHeight = "0px";
+            // stickyPad.style.height = "20px";
+
+            if(innerDivs.length > 2) // hide draggable icons(x,y, diagonal directions)
+                for(let i = 2; i <= 4; i++) innerDivs[i].style.display = "none";
 
         } else {
+            navBar.style.height = navBar.style.margin; // using saved info from buffer(margin, padding)
+            navBar.style.width = navBar.style.padding;
+            
+
             textbox.style.display = "block";
-            stickyPad.style.height = "calc(stickyPad.style.height - 20rem)";
-            stickyPad.style.minHeight  = "10rem";
+            // stickyPad.style.height = "calc(stickyPad.style.height - 20rem)";
+            stickyPad.style.minHeight  = "13rem";
             stickyPad.style.boxShadow =  "-2px 3px 25px -7px rgba(0,0,0,0.75)";
-            stickyPad.style.height = height;
+            // stickyPad.style.height = height;
+
+            if(innerDivs.length > 2) // show draggable icons
+                for(let i = 2; i <= 4; i++) innerDivs[i].style.display = "block";
         }
 
         isOpen = !isOpen;

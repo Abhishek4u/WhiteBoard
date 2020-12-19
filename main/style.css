@@ -140,15 +140,15 @@ body {
 .stickyPad {
 	height: 14rem;
 	width: 14rem;
-	min-width: 11rem;
-	min-height: 10rem;
+	min-width: 12rem;
+	min-height: 13rem;
 	border-radius: 2px;
-
 	position: absolute !important;
 	top: 40vh;
 	left: 30vw;
-
 	box-shadow: -2px 3px 25px -7px rgba(0, 0, 0, 0.75);
+	max-height: 20rem;
+	max-width: 30rem;
 }
 .nav-bar {
 	height: 20%;
@@ -162,13 +162,13 @@ body {
 	border-radius: inherit;
 }
 .nav-bar > div > img {
-	margin: 5;
+	min-width: 1.6rem;
 }
 
 .close,
 .minimize {
 	height: 46%;
-	width: 10%;
+	/* width: 10%; */
 	margin-right: 5px;
 	border-radius: 56%;
 }

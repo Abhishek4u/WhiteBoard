@@ -1,10 +1,11 @@
-let imgInput = document.querySelector("#acceptImg");
 
 function uploadFile() {
+    let imgInput = document.createElement("input");
+    imgInput.type = "file";
 
     imgInput.click();
-
     imgInput.addEventListener("change", function () {
+        console.log("Came");
 
         let imgObj = imgInput.files[0];
 
@@ -17,6 +18,7 @@ function uploadFile() {
 
         textBox.appendChild(img);
     })
+    imgInput.remove();
 }
 
 function downloadBoard() {

@@ -1,6 +1,6 @@
 let editor = ace.edit("editor");
 
-editor.setTheme("ace/theme/dracula");
+editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/text");
 editor.setFontSize(14);
 
