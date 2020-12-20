@@ -7,7 +7,7 @@
     <title>WhiteBoard</title>
     <link rel="shortcut icon" href="./Images/board.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="editor/editor.css">
+    <link rel="stylesheet" type="text/css" href="editor.css">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -144,14 +144,16 @@
                 </div>
                 <div class="save-file options-bar-btn pointer-icon" onclick=saveFile()>Save </div>
                 <div class="options-bar-btn lang-selector">Language </div>
-                <select>
-                    <option value="ace/mode/c_cpp" onclick=changeExtension(value)>C / C++</option>
-                    <option value="ace/mode/java" onclick=changeExtension(value)>Java</option>
-                    <option value="ace/mode/javascript" onclick=changeExtension(value)>JavaScript</option>
-                    <option value="ace/mode/json" onclick=changeExtension(value)>JSON</option>
-                    <option value="ace/mode/python" onclick=changeExtension(value)>Python</option>
-                    <option value="ace/mode/css" onclick=changeExtension(value)>CSS</option>
-                    <option value="ace/mode/html" onclick=changeExtension(value)>HTML</option>
+
+                <select onchange="changeExtension(this.value);">
+                    <!-- onclick does not work in chrome so use onchange -->
+                    <option value="ace/mode/c_cpp" >C / C++</option>
+                    <option value="ace/mode/java" >Java</option>
+                    <option value="ace/mode/javascript" >JavaScript</option>
+                    <option value="ace/mode/json" >JSON</option>
+                    <option value="ace/mode/python" >Python</option>
+                    <option value="ace/mode/css" >CSS</option>
+                    <option value="ace/mode/html" >HTML</option>
                 </select>
             </div>
         </div>
@@ -184,7 +186,7 @@
     <script>
         const socket = io.connect("https://whiteboard-live.herokuapp.com/");
 
-        // const socket = io.connect("http://localhost:3000");  For offline
+        // const socket = io.connect("http://localhost:3000");  //For offline
 
     </script>
 
@@ -196,11 +198,13 @@
     <script src="tools.js"></script>
     <script src="sticky.js"></script>
     <script src="canvas.js"></script>
-    <script src="receiver.js"></script>
-
+    
     <script src="editor/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="editor/editor.js"></script>
-    <script src="editor/editor-fxns.js"></script>
+    <script src="editor.js"></script>
+    <script src="editor-fxns.js"></script>
+    <script src="editorSocketFxns.js"></script>
+    
+    <script src="receiver.js"></script>
 
 </body>
 

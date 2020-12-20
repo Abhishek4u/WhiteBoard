@@ -7,6 +7,7 @@ editor.setFontSize(14);
 
 function changeExtension(lang) {
     editor.session.setMode(lang);
+    // console.log(lang);
 }
 
 async function handleFileLoad(event) {

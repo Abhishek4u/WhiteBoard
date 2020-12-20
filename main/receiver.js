@@ -47,6 +47,32 @@ socket.on("userJoined", (user) => {
 
 })
 
+socket.on("userLeft", (user) => {
+    userLeft(user);
+})
+
+socket.on("updateCode", (obj) => {
+    currentUserChangingCode = false;
+    // so onchange() does not fire
+    editor.setValue(obj.code);
+
+    editor.moveCursorTo(obj.cursor.row, obj.cursor.column); 
+    editor.clearSelection(); // to remove selection highlighting
+    // after changing code set current user as true so
+    // that onchange can fire
+    currentUserChangingCode = true;
+})
+
+// socket.on("changeCursor", (cursor) => {
+//     currentUserChangingCursor = false;
+//     // so onchange() does not fire
+//     console.log(cursor.row + " " + cursor.column);
+//     editor.moveCursorTo(cursor.row, cursor.column); 
+//     // move the cursor
+//     currentUserChangingCursor = true;
+//     // now make true
+// })
+
 function addMsg(data) {
 
 
@@ -65,10 +91,20 @@ function addMsg(data) {
 
 function userJoined(user) {
 
+    chatBotMsg(user, true);    
+}
+
+function userLeft(user) {
+
+    chatBotMsg(user, false);
+}
+
+function chatBotMsg(user, doesJoined) {
     let messageBody = document.getElementById("msg-container");
     let div = document.createElement("div");
 
-    div.innerHTML = `<h4>${user} joined the chat </h4>`;
+    let msg = `<h4>${user} ` + (doesJoined === true ? "joined" : "left") +"</h4>";
+    div.innerHTML = msg;
     div.setAttribute("id", "chatBot");
 
     messageBody.appendChild(div);

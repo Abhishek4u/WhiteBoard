@@ -12,6 +12,7 @@ const socketServer = require("socket.io")(httpServer);
 
 app.use(express.static("main"));
 
+
 socketServer.on("connection", function (socket) {
     // // socket.room = roomId;
     // console.log("New Client Connected");
@@ -33,6 +34,10 @@ socketServer.on("connection", function (socket) {
         socket.to(socket.room).emit("userJoined",person);
     });
 
+    socket.on("sendLeaveMessage", function (person) {
+        socket.to(socket.room).emit("userLeft", person);
+    })
+
     // listener ==> recieve and distribute
     socket.on("colorChange", function (color) {
         socket.to(socket.room).emit('rColorChange', color);
@@ -47,12 +52,18 @@ socketServer.on("connection", function (socket) {
     })
 
     socket.on("distributeMsg", (data) => {
+        
         socket.to(socket.room).emit("addMsg", data);
+    })
+
+    socket.on("distributeCode", (obj) => {
+
+        socket.to(socket.room).emit("updateCode", obj);
     })
 
 })
 let port = process.env.PORT || 3000;
 
 httpServer.listen(port, function () {
-    console.log("Server is listening to request at port 3000");
+    // console.log("Server is listening to request at port 3000");
 })

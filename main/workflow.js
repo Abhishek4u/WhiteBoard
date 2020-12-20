@@ -33,7 +33,7 @@ chatSwitch.addEventListener("click", () => {
 
 let btn = document.getElementById("sckt");
 let id = document.getElementById("id");
-let name = document.getElementById("name");
+let userName = document.getElementById("name");
 
 let roomId = id.value;
 
@@ -100,15 +100,18 @@ editorSwitch.addEventListener("click", () => {
 
 function idNRoomGeneration() {
 
-    person = name.value;
+    person = (userName.value == "" ? person : userName.value);
     // console.log(person);
-    name.value = "";
+    userName.value = "";
 
     socketRoom.style.display = "none";
     isClicked = false;
 
     let newroom = id.value;
-    console.log(newroom);
+    // console.log(newroom);
+
+    // to inform other users
+    socket.emit("sendLeaveMessage", person); 
     socket.emit('switchRoom', {newroom,person});
 
     id.value = "";
@@ -137,8 +140,11 @@ function disconnectMe() {
     idChild.style.color = "#f51f5a";
 
     let newroom = randomId();
-    console.log(newroom);
-    let person = name.value;
+    // console.log(newroom);
+    let person = userName.value;
+
+    // to inform other users
+    socket.emit("sendLeaveMessage", person);
     socket.emit('switchRoom', {newroom,person});
 
     let chatTitle = document.getElementById("chat-title");
