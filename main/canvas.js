@@ -8,6 +8,7 @@ board.addEventListener("mousedown", function (e) {
     pencilOptions.classList.remove("show");
 
     socketRoom.style.display = "none";
+    sandwich.children[0].style.removeProperty("transform");
     isClicked = false;
 
     redoArr = []

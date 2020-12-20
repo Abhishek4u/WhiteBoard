@@ -17,7 +17,7 @@ async function handleFileLoad(event) {
 }
 
 function handleFileSave(obj) {
-    let fileName = obj.name + obj.extension;
+    let fileName = (obj.name == "" ? "no-name" : obj.name) + (obj.extension == "" ? ".txt" : obj.extension);
     let type = obj.type;
 
     // console.log(fileName);

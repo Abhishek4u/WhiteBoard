@@ -1,14 +1,20 @@
-let person = "";
+let person = "unknown";
 
-let sandwich = document.getElementsByClassName("sandwich")[0];
+let sandwich = document.getElementsByClassName("sandwich")[0]; 
+// using[0] bcz selecting elt using class and class can be on multiple elts so selecting first one
 let socketRoom = document.getElementById("socketRoom");
+
 let isClicked = false;
 sandwich.addEventListener("click", () => {
     if (!isClicked) {
         socketRoom.style.display = "block";
         isClicked = true;
+
+        sandwich.children[0].style.transform = "rotate(90deg)";
+        // if removing then remove from idNRoomGeneration(), disconnectMe(), canvas.js
     } else {
         socketRoom.style.display = "none";
+        sandwich.children[0].style.removeProperty("transform");
         isClicked = false;
     }
 
@@ -105,6 +111,8 @@ function idNRoomGeneration() {
     userName.value = "";
 
     socketRoom.style.display = "none";
+    sandwich.children[0].style.removeProperty("transform");
+
     isClicked = false;
 
     let newroom = id.value;
@@ -133,6 +141,7 @@ function idNRoomGeneration() {
 function disconnectMe() {
 
     socketRoom.style.display = "none";
+    sandwich.children[0].style.removeProperty("transform");
     isClicked = false;
 
     let idChild = document.getElementById("socketId");

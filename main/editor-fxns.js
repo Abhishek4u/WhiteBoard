@@ -42,6 +42,7 @@ function saveFile() {
     let type = getExtensionType(fileExtension.value);
     let obj = {
         name: fileInitialName.value,
+        extension : fileExtension.value,
         type: type
     }
 
